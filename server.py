@@ -2,8 +2,8 @@ import time
 import sys
 
 
-from openAi_gpt_demo.ChatRobot import *
-from openAi_gpt_demo.Summarizer import *
+from ChatRobot import *
+from Summarizer import *
 from flask import Flask, request, jsonify
 from openAiKey import *
 from rolesDict import *
@@ -13,7 +13,7 @@ app = Flask(__name__)
 userChatBot = {}
 userSummerizer = {}
 userTime = {}
-
+# os.environ["OPENAI_API_KEY"] = "production"
 def getChatBot(userId):
     return userChatBot[userId]
 
@@ -67,6 +67,7 @@ def question():
         question = params["question"]
     else:
         return jsonify({'error': 'Wrong method'}), 400
+    print(userChatBot)
     chatModel = userChatBot[userId]
     openai.api_key = get_openAiKey()
     answer = chatModel.user_input(question)
@@ -91,4 +92,4 @@ def summarization():
     output = {"answer":answer}
     return jsonify(output)
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=12345, debug=True)
+    app.run(host='0.0.0.0', port=12345, debug=True, use_reloader=False)

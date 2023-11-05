@@ -1,8 +1,8 @@
 import openai
 import re
 import os
-os.environ["HTTP_PROXY"] = "http://127.0.0.1:7890"
-os.environ["HTTPS_PROXY"] = "http://127.0.0.1:7890"
+#os.environ["HTTP_PROXY"] = "http://127.0.0.1:7890"
+#os.environ["HTTPS_PROXY"] = "http://127.0.0.1:7890"
 
 
 import heapq
@@ -104,17 +104,17 @@ roles_dict = {
 
 
 openAi_key=[
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0),
-("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",0)
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0),
+("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",0)
 ]
 
 open_ai_min_heap = [(x[1], x[0]) for x in openAi_key]
